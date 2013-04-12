@@ -158,7 +158,6 @@ public class Map {
 	        MapBox NorthBox = MapGrid[(int) playerLocation.getX()][(int) playerLocation.getY()-1];
 	        MapGrid[(int) playerLocation.getX()][(int) playerLocation.getY()-1] = new MapBox(NorthBox.North, BoxType.Open, NorthBox.East, NorthBox.West, NorthBox.hasKey(), NorthBox.isEnd());
 	    }
-	    
 
         int tilesIndex = map.getLayerIndex("tiles");
         
