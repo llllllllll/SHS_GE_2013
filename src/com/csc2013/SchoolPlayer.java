@@ -287,7 +287,7 @@ public class SchoolPlayer {
 	}
 
 	/**
-	 * Get a list of adjacent tiles.
+	 * Get a list of open adjacent tiles.
 	 * @param t The tile to look for adjacent tiles against.
 	 * @return A list of adjacent tiles.
 	 */
@@ -321,6 +321,7 @@ public class SchoolPlayer {
 
 		return adjacent;
 	}
+	
 	/**
 	 * Get a list of adjacent tiles.
 	 * @param t The tile to look for adjacent tiles against.
@@ -392,11 +393,7 @@ public class SchoolPlayer {
 			if (!is_unexplored(target)) {
 				ret_val = SchoolPlayer.DEAD_END;
 			}
-
-			/*if ((get_adjacent_open_tiles(target)).size() <= 1)
-				ret_val = SchoolPlayer.DEAD_END;*/
 			
-
 			break;
 
 		default:
@@ -436,6 +433,13 @@ public class SchoolPlayer {
 		return possible_targets;
 	}
 
+	/**
+	 * Attempts to find a short path to the target without doing any
+	 * intense processing
+	 * @param src The first tile in the path
+	 * @param dest The last tile in the path
+	 * @return A list of tiles to be traversed to reach the path
+	 */
 	private ArrayList<Tile> fast_path_to_target(Tile src, Tile dest) {
 		ArrayList<Tile> possible = new ArrayList<Tile>();
 		possible.add(src);
@@ -491,8 +495,6 @@ public class SchoolPlayer {
 			if (determine_priority(t) >= SchoolPlayer.BLOCKED)
 				possible = null;
 		}
-		if (possible == null)
-			System.out.println("fastpath failed\n");
 		
 		return possible;
 	}
@@ -521,11 +523,11 @@ public class SchoolPlayer {
 		ArrayList<Tile> new_traversed = (ArrayList) traversed.clone();
 		new_traversed.add(src);
 
-	
 		if (src.equals(dest)) {
 			return new_traversed;
 		}
 		
+		// Attempt to get a path without any intensive computing
 		if(fast_path_to_target(src, dest)!= null) {
 			for (Tile t : fast_path_to_target(src, dest)) {
 				new_traversed.add(t);
