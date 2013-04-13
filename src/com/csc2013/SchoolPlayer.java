@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 /**
  * 
- * @brief SchoolPlayer was programmed entirely by white cis males
- * @author Jack Pugmire
+ * @brief Simsbury High School's maze solving AI for the 2013 GE Computer Science Contest.
+ * @author Simsbury High School / Jack Pugmire, Joe Jevnik, Sam Sims, Zayd Salah, Trevor Aron
  * 
  */
 public class SchoolPlayer {
